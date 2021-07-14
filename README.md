@@ -1,10 +1,13 @@
 # Paint Tool
 Painting Board made with VanilaJS. 
 
+
 ## Technology Stack
 * HTML
 * CSS
 * VanilaJS
+
+<br>
 
 ## Key Features
 * Drawing 
@@ -12,6 +15,8 @@ Painting Board made with VanilaJS.
 * Changing a brush size
 * Transform bursh to fill
 * Saving an image
+
+<br>
 
 ## Problem Solving
 * How to make a line on canvas
@@ -146,6 +151,7 @@ if (modeBtn) {
   * The HTMLCanvasElement.toDataURL() method returns a data URI containing a representation of the image in the format specified by the type parameter (defaults to PNG).
   * Make an &lt;a&gt; element and assign the data URI to href attribute, also add a download attribute.
   * add a click() method to the &lt;a&gt; element
+  
 ``` javascript
 const saveBtn = document.querySelector('.jsSave');
 
@@ -170,11 +176,10 @@ if (saveBtn) {
 }
 ```
 
-
-
+<br>
 
 ## What I learned from the project
-HTML
+### HTML
 * &lt;input&gt; elements of type range let the user specify a numeric value which must be no less than a given value, and no more than another given value.
 ```html
         <input
@@ -186,9 +191,8 @@ HTML
           step="0.1"
         />
 ```
-<br>
 
-CSS
+### CSS
 * The background of body extends to the viewport, if html does not have a background. 
 * The all shorthand CSS property resets all of an element's properties except unicode-bidi, direction, and CSS Custom Properties. unset value is useful to &lt;button&gt; element.
 ```css 
@@ -208,8 +212,10 @@ div {
 * padding: x 2x; looks good.
 <br>
 
-JavaScript
+### JavaScript
 * The HTMLElement.click() method simulates a mouse click on an element. When click() is used with supported elements (such as an <input>), it fires the element's click event.
+
+<br>
 
 ## Screenshot / GIF of the project
 ![paint_tool](https://user-images.githubusercontent.com/78864112/125622985-4942f352-90f3-4db9-9fc5-87fbe1b05bf8.gif)
