@@ -4,10 +4,16 @@ const colors = document.querySelectorAll('.jsColor');
 const range = document.querySelector('.jsRange');
 const mode = document.querySelector('.jsMode');
 
-/*set context default*/
-ctx.strokeStyle = '#2c2c2c';
-ctx.lineWidth = range.value;
+const INITIAL_COLOR = '#2C2C2C';
 
+/*set context default*/
+ctx.strokeStyle = INITIAL_COLOR;
+ctx.lineWidth = range.value;
+ctx.fillStyle = 'white';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.fillStyle = INITIAL_COLOR;
+
+/*flag variable*/
 let painting = false;
 let filling = false;
 
@@ -37,6 +43,7 @@ function stopPainting() {
 function changeColor(event) {
   const color = event.target.style.backgroundColor;
   ctx.strokeStyle = color;
+  ctx.fillStyle = color;
 }
 
 function changeBrushSize(event) {
@@ -53,11 +60,21 @@ function changeMode(event) {
     mode.innerText = 'paint';
   }
 }
+
+function fillColor(event) {
+  if (!filling) {
+    return;
+  } else {
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+}
+
 if (canvas) {
   canvas.addEventListener('mousedown', startPainting);
   canvas.addEventListener('mousemove', onMouseMove);
   canvas.addEventListener('mouseup', stopPainting);
   canvas.addEventListener('mouseleave', stopPainting);
+  canvas.addEventListener('click', fillColor);
 }
 
 if (colors) {
