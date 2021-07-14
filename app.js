@@ -2,7 +2,8 @@ const canvas = document.querySelector('.jsCanvas');
 const ctx = canvas.getContext('2d');
 const colors = document.querySelectorAll('.jsColor');
 const range = document.querySelector('.jsRange');
-const mode = document.querySelector('.jsMode');
+const modeBtn = document.querySelector('.jsMode');
+const saveBtn = document.querySelector('.jsSave');
 
 const INITIAL_COLOR = '#2C2C2C';
 
@@ -54,10 +55,10 @@ function changeBrushSize(event) {
 function changeMode(event) {
   if (filling) {
     filling = false;
-    mode.innerText = 'fill';
+    modeBtn.innerText = 'fill';
   } else {
     filling = true;
-    mode.innerText = 'paint';
+    modeBtn.innerText = 'paint';
   }
 }
 
@@ -69,12 +70,24 @@ function fillColor(event) {
   }
 }
 
+function preventCM(event) {
+  event.preventDefault();
+}
+
+function saveImage(event) {
+  const image = canvas.toDataURL('image/png', 1.0);
+  const link = document.createElement('a');
+  link.href = image;
+  link.download = '';
+  link.click();
+}
 if (canvas) {
   canvas.addEventListener('mousedown', startPainting);
   canvas.addEventListener('mousemove', onMouseMove);
   canvas.addEventListener('mouseup', stopPainting);
   canvas.addEventListener('mouseleave', stopPainting);
   canvas.addEventListener('click', fillColor);
+  canvas.addEventListener('contextmenu', preventCM);
 }
 
 if (colors) {
@@ -85,7 +98,10 @@ if (range) {
   range.addEventListener('input', changeBrushSize);
 }
 
-if (mode) {
-  console.log(mode);
-  mode.addEventListener('click', changeMode);
+if (modeBtn) {
+  modeBtn.addEventListener('click', changeMode);
+}
+
+if (saveBtn) {
+  saveBtn.addEventListener('click', saveImage);
 }
