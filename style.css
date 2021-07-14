@@ -8,6 +8,10 @@
   --size-body-padding: 50px;
   --size-controls__color: 50px;
   --size-controls-margin: 80px;
+  --size-controls__btns-margin: 30px;
+  --size-controls__button-padding: 5px;
+  --size-controls__button-font: 12px;
+  --size-controls__range-margin: 30px;
 }
 body {
   background-color: var(--color-body);
@@ -27,6 +31,36 @@ body {
 
 .controls {
   margin-top: var(--size-controls-margin);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.controls .controls__btns {
+  margin-bottom: var(--size-controls__btns-margin);
+}
+
+.controls__btns button {
+  all: unset;
+  cursor: pointer;
+  background-color: var(--color-white);
+  padding: var(--size-controls__button-padding)
+    calc(var(--size-controls__button-padding) * 4);
+  border-radius: var(--size-controls__button-padding);
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: var(--size-controls__button-font);
+}
+
+.controls__btns button:active {
+  transform: scale(0.98);
+}
+
+.controls .controls__range {
+  margin-bottom: var(--size-controls__range-margin);
 }
 .controls .controls__colors {
   display: flex;
